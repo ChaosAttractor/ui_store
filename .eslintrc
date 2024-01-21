@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "env": {
+  "node": true
+},
+  "parser": "vue-eslint-parser",
+  "extends": [
+  "plugin:vue/vue3-recommended",
+  "eslint:recommended",
+  "@vue/prettier"
+],
+  "rules": {
+    "vue/component-tags-order": [
+      "error",
+      {
+        "order": [
+          "template",
+          "script",
+          "style"
+        ]
+      }
+    ]
+  }
+}
