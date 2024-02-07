@@ -1,0 +1,106 @@
+@import "mixins"
+
+@font-face
+  font-family: 'Montserrat Bold'
+  src: url('./assets/fonts/montserrat/Montserrat-Bold.ttf')
+  font-weight: 700
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat Semi Bold'
+  src: url('./assets/fonts/montserrat/Montserrat-SemiBold.ttf')
+  font-weight: 600
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat Regular'
+  src: url('./assets/fonts/montserrat/Montserrat-Regular.ttf')
+  font-weight: 400
+  font-style: normal
+
+@font-face
+  font-family: 'Montserrat Light'
+  src: url('./assets/fonts/montserrat/Montserrat-Light.ttf')
+  font-weight: 300
+  font-style: normal
+
+h1
+  font-family: 'Montserrat Regular', sans-serif
+  font-size: 36px
+  line-height: 140%
+  font-weight: 400
+  &.medium
+    font-family: 'Montserrat Semi Bold', sans-serif
+  &.bold
+    font-family: 'Montserrat Bold', sans-serif
+  &.light
+    font-family: 'Montserrat Light', sans-serif
+
+h2
+  font-family: 'Montserrat Bold', sans-serif
+  font-size: 28px
+  line-height: 120%
+  &.medium
+    font-family: 'Montserrat Semi Bold', sans-serif
+  &.regular
+    font-family: 'Montserrat Regular', sans-serif
+  &.light
+    font-family: 'Montserrat Light', sans-serif
+
+h3
+  font-family: 'Montserrat Bold', sans-serif
+  font-size: 24px
+  line-height: 140%
+  &.medium
+    font-family: 'Montserrat Semi Bold', sans-serif
+  &.regular
+    font-family: 'Montserrat Regular', sans-serif
+  &.light
+    font-family: 'Montserrat Light', sans-serif
+
+h4
+  font-family: 'Montserrat Bold', sans-serif
+  font-size: 20px
+  line-height: 120%
+  &.medium
+    font-family: 'Montserrat Semi Bold', sans-serif
+  &.regular
+    font-family: 'Montserrat Regular', sans-serif
+  &.light
+    font-family: 'Montserrat Light', sans-serif
+
+.kusakabe-text
+  @include setFontSize(18px, 120%, 'Regular')
+  &.medium
+    font-family: 'Montserrat Semi Bold', sans-serif
+  &.bold
+    font-family: 'Montserrat Bold', sans-serif
+  &.light
+    font-family: 'Montserrat Light', sans-serif
+
+  &-t2
+    @include setFontSize(16px, 120%, 'Regular')
+    &.medium
+      font-family: 'Montserrat Semi Bold', sans-serif
+    &.bold
+      font-family: 'Montserrat Bold', sans-serif
+    &.light
+      font-family: 'Montserrat Light', sans-serif
+
+  &-t3
+    @include setFontSize(14px, 130%, 'Regular')
+    &.medium
+      font-family: 'Montserrat Semi Bold', sans-serif
+    &.bold
+      font-family: 'Montserrat Bold', sans-serif
+    &.light
+      font-family: 'Montserrat Light', sans-serif
+
+  &-t4
+    @include setFontSize(12px, 120%, 'Regular')
+    &.medium
+      font-family: 'Montserrat Semi Bold', sans-serif
+    &.bold
+      font-family: 'Montserrat Bold', sans-serif
+    &.light
+      font-family: 'Montserrat Light', sans-serif

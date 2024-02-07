@@ -1,0 +1,42 @@
+@import "colors"
+
+@mixin setTextParams($height, $lineHeight, $fontSize)
+  height: $height !important
+  line-height: $lineHeight !important
+  font-size: $fontSize !important
+
+@mixin setFontSize($font-size, $line-height,$font-weights)
+  font-size: $font-size !important
+  line-height: $line-height !important
+  font-family: 'Montserrat #{$font-weights}', sans-serif
+
+@mixin scrollbars($size)
+  // For Google Chrome
+  &::-webkit-scrollbar
+    width:  $size
+    height: $size
+
+  &::-webkit-scrollbar-thumb
+    border-radius: 10px
+    background: rgba(#0032A0, 0.16)
+    &:hover
+      background: #B5C3DB
+    &:active
+      background: #A7B5CE
+
+
+  &::-webkit-scrollbar-track
+    border-radius: 10px
+    background: #EFF3FA
+
+
+  // For Internet Explorer
+  &
+    scrollbar-face-color: #A7B5CE !important
+    scrollbar-track-color: #EFF3FA !important
+
+@mixin getGap($gapVertical, $gapHorizontal:$gapVertical, $step: 4px)
+  @if $gapHorizontal != 0
+    column-gap: calc(#{$gapHorizontal} * #{$step})
+  @if $gapVertical != 0
+    row-gap: calc(#{$gapVertical} * #{$step})

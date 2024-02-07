@@ -5,8 +5,23 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Root',
-      component: () => import('../App.vue'),
+      name: 'Store',
+      component: () => import('../modules/store/pages/StorePage.vue'),
+    },
+    {
+      path: '/auth',
+      name: 'Auth',
+      component: () => import('../modules/auth/pages/AuthPage.vue'),
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: () => import('../modules/admin/pages/AdminPage.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: () => import('../modules/profile/pages/ProfilePage.vue'),
     },
   ],
 });
