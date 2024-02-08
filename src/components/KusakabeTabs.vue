@@ -20,6 +20,7 @@ export default {
   emits: ['update:tab'],
   methods: {
     tabHandler(tab) {
+      this.$router.push({ query: { tab } });
       this.$emit('update:tab', tab);
     },
   },

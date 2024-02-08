@@ -1,4 +1,22 @@
 @import "mixins"
+@import "colors"
+
+$main-x-padding: 20px
+
+.main-wrapper
+  height: 100%
+  background: map-get($plain, 'background')
+  &__container
+    width: calc(1200px - $main-x-padding)
+    padding: 0 $main-x-padding
+    margin: 0 auto
+  &--body
+    flex: auto
+
+@media (max-width: 1200px)
+  .main-wrapper
+    &__container
+      width: 100%
 
 *
   margin: 0
@@ -6,6 +24,9 @@
 
 body
   @include scrollbars(12px)
+
+body, html, #app
+  height: 100%
 
 .d-flex
   display: flex
