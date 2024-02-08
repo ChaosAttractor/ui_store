@@ -30,10 +30,6 @@ export default {
 
 <style lang="sass" scoped>
 .profile-tab
-  &__sections
-    //display: flex
-    //flex-direction: column
-    //row-gap: 10px
   &__form
     display: flex
     flex-direction: column

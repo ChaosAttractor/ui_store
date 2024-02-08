@@ -4,6 +4,9 @@
     <template v-if="activeTab === 'profile'">
       <ProfileTab />
     </template>
+    <template v-if="activeTab === 'orders'">
+      <OrdersTab />
+    </template>
   </section>
 </template>
 
@@ -12,10 +15,11 @@ import tabList from '../entities/tabList.js';
 
 import KusakabeTabs from '@/components/KusakabeTabs.vue';
 import ProfileTab from '../components/ProfileTab.vue';
+import OrdersTab from '../components/OrdersTab.vue';
 
 export default {
   name: 'ProfilePage',
-  components: { ProfileTab, KusakabeTabs },
+  components: { OrdersTab, ProfileTab, KusakabeTabs },
   data: () => ({
     tabList,
     activeTab: tabList()[0].value,

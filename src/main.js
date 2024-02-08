@@ -6,6 +6,8 @@ import 'element-plus/dist/index.css';
 
 import './assets/sass/index.sass';
 
+import icons from './components/icons';
+
 import router from './router';
 
 import App from './App.vue';
@@ -20,6 +22,7 @@ const initApp = async () => {
 
   await useAuthStore().checkToken();
 
+  app.use(icons);
   app.use(router);
   app.use(ElementPlus);
   app.mount('#app');

@@ -31,6 +31,15 @@ body, html, #app
 .d-flex
   display: flex
 
+.g
+  @for $variable from 1 through 16
+    &a-#{$variable}
+      @include getGap($variable)
+    &x-#{$variable}
+      @include getGap(0, $variable)
+    &y-#{$variable}
+      @include getGap($variable, 0)
+
 .flex
   &-col
     flex-direction: column
@@ -54,3 +63,20 @@ body, html, #app
     align-items: baseline
   &-center
     align-items: center
+
+.kusakabe-icon
+  &-color
+    transition: .3s stroke
+    stroke: map-get($plain, 'black')
+    &_fill
+      stroke: transparent
+      fill: map-get($plain, 'black')
+    &__transparent
+      stroke: transparent
+  &-cursor
+    &_inherit
+      cursor: inherit
+    &_default
+      cursor: default
+    &_pointer
+      cursor: pointer

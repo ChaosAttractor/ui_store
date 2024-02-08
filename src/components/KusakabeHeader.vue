@@ -2,22 +2,38 @@
   <el-header class="kusakabe-header">
     <section class="main-wrapper__container kusakabe-header--wrapper">
       <router-link class="kusakabe-header__title" to="/"> KUSAKABE </router-link>
-      <a v-if="active" href="/profile">
-        {{ profile.fullName }}
-      </a>
-      <a v-else href="/auth"> Авторизация </a>
+      <div v-if="active" class="d-flex align-center">
+        <router-link to="/profile" class="kusakabe-header__profile kusakabe-text-t2">
+          {{ profile.fullName }}
+        </router-link>
+        <KusakabeIconWrapper
+          icon-name="LogoutIcon"
+          class="kusakabe-icon-color kusakabe-icon-cursor_pointer"
+          @click="logout()"
+        />
+      </div>
+
+      <router-link v-else to="/auth" class="kusakabe-header__profile kusakabe-text-t2">
+        Авторизация
+      </router-link>
     </section>
   </el-header>
 </template>
 
 <script>
-import { mapState } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import { useUserStore } from '@/stores/user.store.js';
+import KusakabeIconWrapper from '@/components/KusakabeIconWrapper.vue';
+import { useAuthStore } from '@/stores/auth.store.js';
 
 export default {
   name: 'KusakabeHeader',
+  components: { KusakabeIconWrapper },
   computed: {
     ...mapState(useUserStore, ['profile', 'active']),
+  },
+  methods: {
+    ...mapActions(useAuthStore, ['logout']),
   },
 };
 </script>
@@ -39,4 +55,8 @@ export default {
     font-size: 36px
     text-decoration: none
     color: map-get($plain, 'black')
+  &__profile
+    color: map-get($plain, 'black')
+    text-decoration: none
+    margin-right: 4px
 </style>
