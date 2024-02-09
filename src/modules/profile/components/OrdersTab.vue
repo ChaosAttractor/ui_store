@@ -1,15 +1,35 @@
 <template>
   <section class="orders-tab">
-    <el-table>
-      <template #empty>
-        <h2 class="kusakabe-text">У Вас еще нет заказов</h2>
+    <KusakabeTable headers="headers" :items="data" expanded>
+      <template #expanded-row-template="{ item }">
+        {{ item }}
       </template>
-    </el-table>
+    </KusakabeTable>
   </section>
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia';
+import { useUserStore } from '@/stores/user.store.js';
+
+import KusakabeTable from '@/components/KusakabeTable.vue';
+
+import headers from '../entities/headers.js';
+
 export default {
   name: 'OrdersTab',
+  components: { KusakabeTable },
+  data: () => ({
+    headers,
+  }),
+  computed: {
+    ...mapState(useUserStore, ['data']),
+  },
+  async mounted() {
+    await this.getOrders();
+  },
+  methods: {
+    ...mapActions(useUserStore, ['getOrders']),
+  },
 };
 </script>

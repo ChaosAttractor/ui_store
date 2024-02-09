@@ -5,6 +5,7 @@ export const useUserStore = defineStore('user', {
   state: () => ({
     loading: false,
     profile: {},
+    data: [],
     acitve: false,
   }),
   actions: {
@@ -16,6 +17,19 @@ export const useUserStore = defineStore('user', {
       } catch (e) {
         console.error('GET USER INFO::', e);
         this.active = false;
+      }
+    },
+    async getOrders() {
+      try {
+        this.loading = true;
+        const {
+          data: { data },
+        } = await Api.get('store/user/profile/orders');
+        this.data = data;
+      } catch (e) {
+        console.error('GET USER INFO::', e);
+      } finally {
+        this.loading = false;
       }
     },
   },

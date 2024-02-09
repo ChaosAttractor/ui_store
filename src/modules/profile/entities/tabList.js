@@ -7,4 +7,8 @@ export default () => [
     value: 'orders',
     name: 'Заказы',
   },
+  {
+    value: 'admin',
+    name: 'Админ панель',
+  },
 ];

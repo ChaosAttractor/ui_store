@@ -1,5 +1,5 @@
 <template>
-  <el-tabs :model-value="value" @tab-change="tabHandler">
+  <el-tabs :model-value="value" class="kusakabe-tabs" @tab-change="tabHandler">
     <el-tab-pane v-for="tab in tabs" :key="tab.value" :label="tab.name" :name="tab.value" />
   </el-tabs>
 </template>
