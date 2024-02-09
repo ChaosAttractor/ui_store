@@ -14,11 +14,6 @@ const router = createRouter({
       component: () => import('../modules/auth/pages/AuthPage.vue'),
     },
     {
-      path: '/admin',
-      name: 'Admin',
-      component: () => import('../modules/admin/pages/AdminPage.vue'),
-    },
-    {
       path: '/profile',
       name: 'Profile',
       component: () => import('../modules/profile/pages/ProfilePage.vue'),

@@ -9,7 +9,7 @@
       </section>
       <el-divider />
       <h3>Безопасность</h3>
-      <el-button> Сменить пароль </el-button>
+      <KusakabeButton content="Сменить пароль" />
     </section>
   </section>
 </template>
@@ -18,10 +18,11 @@
 import { mapState } from 'pinia';
 import { useUserStore } from '@/stores/user.store.js';
 import KusakabeInput from '@/components/KusakabeInput.vue';
+import KusakabeButton from '@/components/KusakabeButton.vue';
 
 export default {
   name: 'ProfileTab',
-  components: { KusakabeInput },
+  components: { KusakabeButton, KusakabeInput },
   computed: {
     ...mapState(useUserStore, ['profile']),
   },

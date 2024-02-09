@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', {
      *
      * @returns {Promise<void>}
      */
-    async login() {
+    async login(router) {
       try {
         this.loading = true;
         const { username, password } = this.form;
@@ -26,6 +26,8 @@ export const useAuthStore = defineStore('auth', {
           username,
           password,
         });
+        router.push('/');
+        await useUserStore().getUserInfo();
       } catch (e) {
         console.error('LOGIN::', e);
       } finally {
@@ -56,6 +58,13 @@ export const useAuthStore = defineStore('auth', {
       } finally {
         window.location.reload();
       }
+    },
+
+    CHANGE_FIELDS_VALUE_BY_KEY(payload) {
+      Object.keys(payload).forEach((key) => {
+        console.log(payload[key]);
+        this.form[key] = payload[key];
+      });
     },
   },
 });

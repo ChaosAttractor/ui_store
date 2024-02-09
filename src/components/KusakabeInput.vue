@@ -3,7 +3,13 @@
     <span :class="labelClasses">
       {{ label }}
     </span>
-    <el-input :placeholder="placeholder" :value="value" @input="inputHandler" />
+    <el-input
+      :placeholder="placeholder"
+      :model-value="value"
+      :type="type"
+      :show-password="showPassword"
+      @input="inputHandler"
+    />
   </div>
 </template>
 
@@ -22,6 +28,14 @@ export default {
     value: {
       type: String,
       default: '',
+    },
+    type: {
+      type: String,
+      default: '',
+    },
+    showPassword: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ['input'],
