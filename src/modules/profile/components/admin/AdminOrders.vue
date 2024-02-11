@@ -1,5 +1,5 @@
 <template>
-  <KusakabeTable :headers="headers()" :items="data" expanded>
+  <KusakabeTable :headers="headers()" :items="data" expanded class="kusakabe-sidebar__body">
     <template #expanded-row-template="{ item }">
       {{ item }}
     </template>

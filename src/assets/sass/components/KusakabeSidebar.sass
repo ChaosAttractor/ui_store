@@ -1,0 +1,14 @@
+@import "../colors"
+
+.kusakabe-sidebar
+  $width: 100%
+  $menu-width: 60px
+  display: flex
+  width: $width
+  & .el-menu-item
+    &.is-active
+      background-color: rgba(map-get($plain, 'black'), .04)
+  &__menu
+    width: 60px !important
+  &__body
+    width: calc($width - $menu-width)

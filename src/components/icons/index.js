@@ -1,7 +1,9 @@
 import LogoutIcon from './LogoutIcon';
+import OrdersIcon from './OrdersIcon';
 
 const icons = {
   LogoutIcon,
+  OrdersIcon,
 };
 
 export default {

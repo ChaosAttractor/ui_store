@@ -5,6 +5,7 @@ export const useAdminStore = defineStore('admin', {
   state: () => ({
     loading: false,
     data: [],
+    tab: null,
   }),
   actions: {
     async getList() {
@@ -19,6 +20,9 @@ export const useAdminStore = defineStore('admin', {
       } finally {
         this.loading = false;
       }
+    },
+    CHANGE_TAB(payload) {
+      this.tab = payload;
     },
   },
 });
