@@ -27,7 +27,7 @@ export const useUserStore = defineStore('user', {
         } = await Api.get('store/user/profile/orders');
         this.data = data;
       } catch (e) {
-        console.error('GET USER INFO::', e);
+        console.error('GET ORDERS::', e);
       } finally {
         this.loading = false;
       }
