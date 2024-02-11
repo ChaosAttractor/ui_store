@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import tabList from '../entities/tabList.js';
+import tabList from '../entities/tabList';
 
-import KusakabeTabs from '@/components/KusakabeTabs.vue';
+import KusakabeTabs from '@/components/KusakabeTabs';
 
-import ProfileTab from '../components/ProfileTab.vue';
-import OrdersTab from '../components/OrdersTab.vue';
-import AdminTab from '../components/AdminTab.vue';
+import ProfileTab from '../components/ProfileTab';
+import OrdersTab from '../components/OrdersTab';
+import AdminTab from '../components/AdminTab';
 
 export default {
   name: 'ProfilePage',

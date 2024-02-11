@@ -1,8 +1,8 @@
 import * as Vue from 'vue';
 import * as Router from 'vue-router';
 
-import { useCommonStore } from '../stores/common.store.js';
-import { useUserStore } from '../stores/user.store.js';
+import { useCommonStore } from '../stores/common.store';
+import { useUserStore } from '../stores/user.store';
 
 const router = Router.createRouter({
   history: Router.createWebHistory(),
@@ -13,7 +13,7 @@ const router = Router.createRouter({
       meta: {
         public: true,
       },
-      component: () => import('../modules/store/pages/StorePage.vue'),
+      component: () => import('../modules/store/pages/StorePage'),
     },
     {
       path: '/auth',
@@ -22,7 +22,7 @@ const router = Router.createRouter({
         title: 'Авторизация',
         public: true,
       },
-      component: () => import('../modules/auth/pages/AuthPage.vue'),
+      component: () => import('../modules/auth/pages/AuthPage'),
     },
     {
       path: '/profile',
@@ -30,7 +30,7 @@ const router = Router.createRouter({
       meta: {
         title: 'Профиль',
       },
-      component: () => import('../modules/profile/pages/ProfilePage.vue'),
+      component: () => import('../modules/profile/pages/ProfilePage'),
     },
   ],
 });

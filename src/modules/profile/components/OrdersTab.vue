@@ -10,11 +10,11 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import { useUserStore } from '@/stores/user.store.js';
+import { useUserStore } from '@/stores/user.store';
 
-import KusakabeTable from '@/components/KusakabeTable.vue';
+import KusakabeTable from '@/components/KusakabeTable';
 
-import headers from '../entities/headers.js';
+import headers from '../entities/headers';
 
 export default {
   name: 'OrdersTab',

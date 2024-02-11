@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import KusakabeHeader from '../components/KusakabeHeader.vue';
-import KusakabeFooter from '../components/KusakabeFooter.vue';
+import KusakabeHeader from '../components/KusakabeHeader';
+import KusakabeFooter from '../components/KusakabeFooter';
 
 export default {
   name: 'MainLayout',

@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import eventBus from './utils/event.bus.js';
+import eventBus from './utils/event.bus';
 
-import MainLayout from './layout/MainLayout.vue';
+import MainLayout from './layout/MainLayout';
 
 export default {
   name: 'App',

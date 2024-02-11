@@ -10,9 +10,9 @@ import icons from './components/icons';
 
 import router from './router';
 
-import App from './App.vue';
+import App from './App';
 
-import { useAuthStore } from './stores/auth.store.js';
+import { useAuthStore } from './stores/auth.store';
 
 const initApp = async () => {
   const app = createApp(App);

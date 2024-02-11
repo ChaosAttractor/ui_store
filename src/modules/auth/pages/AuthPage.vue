@@ -20,9 +20,11 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import { useAuthStore } from '@/stores/auth.store.js';
-import KusakabeButton from '@/components/KusakabeButton.vue';
-import KusakabeInput from '@/components/KusakabeInput.vue';
+
+import { useAuthStore } from '@/stores/auth.store';
+
+import KusakabeButton from '@/components/KusakabeButton';
+import KusakabeInput from '@/components/KusakabeInput';
 
 export default {
   name: 'AuthPage',

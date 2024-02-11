@@ -16,9 +16,9 @@
 
 <script>
 import { mapState } from 'pinia';
-import { useUserStore } from '@/stores/user.store.js';
-import KusakabeInput from '@/components/KusakabeInput.vue';
-import KusakabeButton from '@/components/KusakabeButton.vue';
+import { useUserStore } from '@/stores/user.store';
+import KusakabeInput from '@/components/KusakabeInput';
+import KusakabeButton from '@/components/KusakabeButton';
 
 export default {
   name: 'ProfileTab',

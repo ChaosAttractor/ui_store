@@ -22,9 +22,9 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import { useUserStore } from '@/stores/user.store.js';
-import KusakabeIconWrapper from '@/components/KusakabeIconWrapper.vue';
-import { useAuthStore } from '@/stores/auth.store.js';
+import { useUserStore } from '@/stores/user.store';
+import KusakabeIconWrapper from '@/components/KusakabeIconWrapper';
+import { useAuthStore } from '@/stores/auth.store';
 
 export default {
   name: 'KusakabeHeader',

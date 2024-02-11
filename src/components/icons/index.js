@@ -1,4 +1,4 @@
-import LogoutIcon from './LogoutIcon.vue';
+import LogoutIcon from './LogoutIcon';
 
 const icons = {
   LogoutIcon,
