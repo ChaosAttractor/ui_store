@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="items">
+  <el-table :data="items" class="kusakabe-table">
     <slot name="body">
       <el-table-column v-if="expanded" type="expand">
         <template #default="props">
