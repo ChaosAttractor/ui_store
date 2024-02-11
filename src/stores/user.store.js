@@ -6,7 +6,7 @@ export const useUserStore = defineStore('user', {
     loading: false,
     profile: {},
     data: [],
-    acitve: false,
+    active: false,
   }),
   actions: {
     async getUserInfo() {

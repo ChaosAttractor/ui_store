@@ -62,7 +62,6 @@ export const useAuthStore = defineStore('auth', {
 
     CHANGE_FIELDS_VALUE_BY_KEY(payload) {
       Object.keys(payload).forEach((key) => {
-        console.log(payload[key]);
         this.form[key] = payload[key];
       });
     },

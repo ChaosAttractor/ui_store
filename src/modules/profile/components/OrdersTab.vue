@@ -1,6 +1,6 @@
 <template>
   <section class="orders-tab">
-    <KusakabeTable headers="headers" :items="data" expanded>
+    <KusakabeTable :headers="headers" :items="data" expanded>
       <template #expanded-row-template="{ item }">
         {{ item }}
       </template>
