@@ -4,6 +4,7 @@
       {{ label }}
     </span>
     <el-input
+      :size="btnSize[size]"
       :placeholder="placeholder"
       :model-value="value"
       :type="type"
@@ -26,7 +27,7 @@ export default {
       default: '',
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: '',
     },
     type: {
@@ -37,13 +38,24 @@ export default {
       type: Boolean,
       default: false,
     },
+    size: {
+      type: String,
+      default: 'M',
+    },
   },
   emits: ['input'],
+  data: () => ({
+    btnSize: {
+      L: 'large',
+      M: 'default',
+      S: 'small',
+    },
+  }),
   computed: {
     labelClasses() {
-      const common = 'kusakabe-input';
-      const label = this.label ? `${common}__label` : '';
-      return `kusakabe-text-t3 ${label}`;
+      const label = this.label ? 'kusakabe-input__label' : '';
+      const size = this.size ? `${label}-${this.size}` : '';
+      return `kusakabe-text-t3 ${label} ${size}`;
     },
   },
   methods: {
@@ -53,10 +65,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass" scoped>
-.kusakabe-input
-  position: relative
-  &__label
-    margin-left: 4px
-</style>

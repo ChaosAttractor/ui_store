@@ -4,6 +4,9 @@
       <template #orders>
         <AdminOrders />
       </template>
+      <template #delivery>
+        <AdminDelivery />
+      </template>
     </KusakabeSidebar>
   </section>
 </template>
@@ -12,15 +15,16 @@
 import { mapActions, mapState } from 'pinia';
 
 import AdminOrders from './admin/AdminOrders';
+import AdminDelivery from './admin/AdminDelivery';
 import KusakabeSidebar from '@/components/KusakabeSidebar';
 
 import sidebar from '../entities/sidebar';
 
-import { useAdminStore } from '@/stores/admin.store';
+import { useAdminStore } from '@/stores/profile/admin.store.js';
 
 export default {
   name: 'AdminTab',
-  components: { KusakabeSidebar, AdminOrders },
+  components: { AdminDelivery, KusakabeSidebar, AdminOrders },
   data: () => ({
     sidebar,
   }),

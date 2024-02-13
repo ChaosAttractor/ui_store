@@ -7,7 +7,13 @@
       @select="selectHandler"
     >
       <el-menu-item v-for="item in menu" :key="item.value" :index="item.value">
-        <KusakabeIconWrapper :icon-name="item.icon" :class="iconClass(item)" />
+        <KusakabeIconWrapper
+          :icon-name="item.icon"
+          :class="iconClass(item)"
+          width="24"
+          height="24"
+          view-box="0 0 24 24"
+        />
         <template #title> {{ item.title }} </template>
       </el-menu-item>
     </el-menu>

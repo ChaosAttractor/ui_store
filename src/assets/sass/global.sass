@@ -1,14 +1,12 @@
 @import "mixins"
 @import "colors"
 
-$main-x-padding: 20px
-
 .main-wrapper
   height: 100%
   background: map-get($plain, 'background')
   &__container
-    width: calc(1200px - $main-x-padding)
-    padding: 0 $main-x-padding
+    width: 1200px
+    padding: 0
     margin: 0 auto
   &--body
     flex: auto
@@ -80,3 +78,10 @@ body, html, #app
       cursor: default
     &_pointer
       cursor: pointer
+
+.text
+  &--black
+    color: map-get($plain, 'black')
+
+.w-full
+  width: 100%

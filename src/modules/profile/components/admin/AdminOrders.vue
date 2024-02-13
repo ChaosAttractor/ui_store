@@ -11,7 +11,7 @@ import { mapActions, mapState } from 'pinia';
 
 import adminHeaders from '../../entities/adminHeaders';
 
-import { useAdminStore } from '@/stores/admin.store';
+import { useAdminStore } from '@/stores/profile/admin.store.js';
 
 import KusakabeTable from '@/components/KusakabeTable';
 
