@@ -1,27 +1,26 @@
 <template>
-  <section>
+  <section class="admin">
     <KusakabeTabs :value="activeTab" :tabs="tabList()" @update:tab="tabHandler">
-      <template #profile>
-        <ProfileTab />
-      </template>
       <template #orders>
-        <OrdersTab />
+        <AdminOrders />
+      </template>
+      <template #delivery>
+        <AdminDelivery />
       </template>
     </KusakabeTabs>
   </section>
 </template>
 
 <script>
-import tabList from '../entities/tabList';
-
+import AdminOrders from '../components/AdminOrders';
+import AdminDelivery from '../components/AdminDelivery';
 import KusakabeTabs from '@/components/KusakabeTabs';
 
-import ProfileTab from '../components/ProfileTab';
-import OrdersTab from '../components/OrdersTab';
+import tabList from '../entities/tabList';
 
 export default {
-  name: 'ProfilePage',
-  components: { OrdersTab, ProfileTab, KusakabeTabs },
+  name: 'AdminTab',
+  components: { KusakabeTabs, AdminDelivery, AdminOrders },
   data: () => ({
     tabList,
     activeTab: tabList()[0].value,

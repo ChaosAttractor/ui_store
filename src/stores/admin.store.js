@@ -5,7 +5,6 @@ export const useAdminStore = defineStore('admin', {
   state: () => ({
     loading: false,
     data: [],
-    tab: null,
   }),
   actions: {
     async getList() {

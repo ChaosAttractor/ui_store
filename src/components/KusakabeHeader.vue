@@ -2,15 +2,20 @@
   <el-header class="kusakabe-header">
     <section class="main-wrapper__container kusakabe-header--wrapper">
       <router-link class="kusakabe-header__title" to="/"> KUSAKABE </router-link>
-      <div v-if="active" class="d-flex align-center">
-        <router-link to="/profile" class="kusakabe-header__profile kusakabe-text-t2">
-          {{ profile.fullName }}
+      <div v-if="active" class="d-flex align-center gx-2">
+        <router-link to="/admin" class="kusakabe-header__profile kusakabe-text-t2">
+          Админ-панель
         </router-link>
-        <KusakabeIconWrapper
-          icon-name="LogoutIcon"
-          class="kusakabe-icon-color kusakabe-icon-cursor_pointer"
-          @click="logout()"
-        />
+        <div class="d-flex align-center">
+          <router-link to="/profile" class="kusakabe-header__profile kusakabe-text-t2">
+            {{ profile.fullName }}
+          </router-link>
+          <KusakabeIconWrapper
+            icon-name="LogoutIcon"
+            class="kusakabe-icon-color kusakabe-icon-cursor_pointer"
+            @click="logout()"
+          />
+        </div>
       </div>
 
       <router-link v-else to="/auth" class="kusakabe-header__profile kusakabe-text-t2">

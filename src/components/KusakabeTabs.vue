@@ -1,7 +1,10 @@
 <template>
-  <el-tabs :model-value="value" class="kusakabe-tabs" @tab-change="tabHandler">
-    <el-tab-pane v-for="tab in tabs" :key="tab.value" :label="tab.name" :name="tab.value" />
-  </el-tabs>
+  <section class="kusakabe-tabs">
+    <el-tabs :model-value="value" @tab-change="tabHandler">
+      <el-tab-pane v-for="tab in tabs" :key="tab.value" :label="tab.name" :name="tab.value" />
+    </el-tabs>
+    <slot :name="value" />
+  </section>
 </template>
 
 <script>

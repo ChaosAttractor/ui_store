@@ -25,6 +25,14 @@ const router = Router.createRouter({
       component: () => import('../modules/auth/pages/AuthPage'),
     },
     {
+      path: '/admin',
+      name: 'Admin',
+      meta: {
+        title: 'Админ панель',
+      },
+      component: () => import('../modules/admin/pages/AdminPages'),
+    },
+    {
       path: '/profile',
       name: 'Profile',
       meta: {

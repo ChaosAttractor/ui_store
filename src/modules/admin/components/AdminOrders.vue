@@ -9,9 +9,9 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 
-import adminHeaders from '../../entities/adminHeaders';
+import ordersHeaders from '../entities/ordersHeaders';
 
-import { useAdminStore } from '@/stores/profile/admin.store.js';
+import { useAdminStore } from '@/stores/admin.store.js';
 
 import KusakabeTable from '@/components/KusakabeTable';
 
@@ -19,7 +19,7 @@ export default {
   name: 'AdminOrders',
   components: { KusakabeTable },
   data: () => ({
-    headers: adminHeaders,
+    headers: ordersHeaders,
   }),
   computed: {
     ...mapState(useAdminStore, ['data']),

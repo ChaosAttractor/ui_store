@@ -26,9 +26,9 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 
-import { useDeliveryStore } from '@/stores/profile/delivery.store';
+import { useDeliveryStore } from '@/stores/delivery.store.js';
 
-import KusakabeDrawer from '@/components/KusakabeDrawer';
+import KusakabeDrawer from '@/components/KusakabeDrawer.vue';
 import KusakabeButton from '@/components/KusakabeButton.vue';
 import KusakabeInput from '@/components/KusakabeInput.vue';
 

@@ -10,6 +10,7 @@ export const useDeliveryStore = defineStore('delivery', {
     id: null,
     data: [],
     view: false,
+    deleteView: false,
     form: {
       name: null,
       price: null,
@@ -46,8 +47,18 @@ export const useDeliveryStore = defineStore('delivery', {
         this.loading.modal = false;
       }
     },
+    getConfirm(id) {
+      this.id = id;
+      this.deleteModalToggle(true);
+    },
+    async confirmDelete() {
+      await Api.delete(`/store/delivery/${this.id}`);
+      this.closeModal();
+      await this.getList();
+    },
     closeModal() {
       this.modalToggle(false);
+      this.deleteModalToggle(false);
       this.form = {
         name: null,
         price: null,
@@ -76,6 +87,9 @@ export const useDeliveryStore = defineStore('delivery', {
     },
     modalToggle(payload = !this.view) {
       this.view = payload;
+    },
+    deleteModalToggle(payload = !this.deleteView) {
+      this.deleteView = payload;
     },
     CHANGE_FIELDS_VALUE_BY_KEY(payload) {
       Object.keys(payload).forEach((key) => {
