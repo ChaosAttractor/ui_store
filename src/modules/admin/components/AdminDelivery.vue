@@ -14,19 +14,22 @@
           :label="head.text"
           :width="head.width"
         >
-          <template v-if="head.value === 'actions'" #default="{ row }">
+          <template v-if="head.value === 'price'" #default="{ row }">
+            <span> {{ row[head.value].toLocaleString() }} &#8381; </span>
+          </template>
+          <template v-else-if="head.value === 'actions'" #default="{ row }">
             <div class="d-flex gx-2">
               <el-tooltip content="Редактирование" placement="top" :enterable="false">
                 <KusakabeIconWrapper
                   icon-name="EditIcon"
-                  class="kusakabe-icon-color kusakabe-icon-cursor_pointer"
+                  class="kusakabe-icon-color admin-delivery--edit kusakabe-icon-cursor_pointer"
                   @click="getDetail(row.id)"
                 />
               </el-tooltip>
-              <el-tooltip content="Редактирование" placement="top" :enterable="false">
+              <el-tooltip content="Удаление" placement="top" :enterable="false">
                 <KusakabeIconWrapper
                   icon-name="DeleteIcon"
-                  class="kusakabe-icon-color kusakabe-icon-cursor_pointer"
+                  class="kusakabe-icon-color admin-delivery--delete kusakabe-icon-cursor_pointer"
                   @click="getConfirm(row.id)"
                 />
               </el-tooltip>
@@ -84,3 +87,13 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+@import "@/assets/sass/colors"
+
+.admin-delivery
+  &--edit:hover
+    stroke: map-get($green, 'light-2') !important
+  &--delete:hover
+    stroke: map-get($red, 'dark') !important
+</style>
