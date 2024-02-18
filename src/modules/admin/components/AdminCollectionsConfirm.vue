@@ -11,19 +11,19 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 
-import KusakabeButton from '@/components/KusakabeButton';
 import KusakabeDialog from '@/components/KusakabeDialog';
+import KusakabeButton from '@/components/KusakabeButton';
 
-import { useDeliveryStore } from '@/stores/delivery.store';
+import { useCollectionsStore } from '@/stores/collections.store';
 
 export default {
-  name: 'AdminDeliveryConfirm',
+  name: 'AdminCollectionsConfirm',
   components: { KusakabeButton, KusakabeDialog },
   computed: {
-    ...mapState(useDeliveryStore, ['id', 'deleteView']),
+    ...mapState(useCollectionsStore, ['id', 'deleteView']),
   },
   methods: {
-    ...mapActions(useDeliveryStore, ['closeModal', 'confirmDelete']),
+    ...mapActions(useCollectionsStore, ['closeModal', 'confirmDelete']),
   },
 };
 </script>

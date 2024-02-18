@@ -7,4 +7,8 @@ export default () => [
     value: 'delivery',
     name: 'Сервисы доставки',
   },
+  {
+    value: 'collections',
+    name: 'Коллекции',
+  },
 ];

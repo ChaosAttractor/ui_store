@@ -7,6 +7,9 @@
       <template #delivery>
         <AdminDelivery />
       </template>
+      <template #collections>
+        <AdminCollections />
+      </template>
     </KusakabeTabs>
   </section>
 </template>
@@ -14,13 +17,14 @@
 <script>
 import AdminOrders from '../components/AdminOrders';
 import AdminDelivery from '../components/AdminDelivery';
+import AdminCollections from '../components/AdminCollections';
 import KusakabeTabs from '@/components/KusakabeTabs';
 
 import tabList from '../entities/tabList';
 
 export default {
   name: 'AdminTab',
-  components: { KusakabeTabs, AdminDelivery, AdminOrders },
+  components: { AdminCollections, KusakabeTabs, AdminDelivery, AdminOrders },
   data: () => ({
     tabList,
     activeTab: tabList()[0].value,

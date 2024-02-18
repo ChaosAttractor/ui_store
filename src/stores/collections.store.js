@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia';
+
 import Api from '@/utils/network/Api';
 
-export const useDeliveryStore = defineStore('delivery', {
+export const useCollectionsStore = defineStore('collections', {
   state: () => ({
     loading: {
       data: false,
@@ -13,7 +14,6 @@ export const useDeliveryStore = defineStore('delivery', {
     deleteView: false,
     form: {
       name: null,
-      price: null,
     },
     mode: 'create',
   }),
@@ -23,10 +23,10 @@ export const useDeliveryStore = defineStore('delivery', {
         this.loading.data = true;
         const {
           data: { data },
-        } = await Api.get('/store/delivery');
+        } = await Api.get('/store/collections');
         this.data = data;
       } catch (e) {
-        console.error('getList::', e);
+        console.error('GET LIST ERROR::', e);
       } finally {
         this.loading.data = false;
       }
@@ -39,7 +39,7 @@ export const useDeliveryStore = defineStore('delivery', {
         this.modalToggle(true);
         const {
           data: { data },
-        } = await Api.get(`/store/delivery/${id}`);
+        } = await Api.get(`/store/collections/${id}`);
         this.CHANGE_FIELDS_VALUE_BY_KEY(data);
       } catch (e) {
         console.error('getDetail::', e);
@@ -48,22 +48,19 @@ export const useDeliveryStore = defineStore('delivery', {
       }
     },
 
-    getConfirm(id) {
-      this.id = id;
-      this.deleteModalToggle(true);
+    modalToggle(payload = !this.view) {
+      this.view = payload;
     },
-    async confirmDelete() {
-      await Api.delete(`/store/delivery/${this.id}`);
-      this.closeModal();
-      await this.getList();
+    deleteModalToggle(payload = !this.deleteView) {
+      this.deleteView = payload;
     },
+
     closeModal() {
       this.modalToggle(false);
       this.deleteModalToggle(false);
       setTimeout(() => {
         this.form = {
           name: null,
-          price: null,
         };
         this.mode = 'create';
         this.id = null;
@@ -74,26 +71,32 @@ export const useDeliveryStore = defineStore('delivery', {
       this.closeModal();
       await this.getList();
     },
+
+    getConfirm(id) {
+      this.id = id;
+      this.deleteModalToggle(true);
+    },
+    async confirmDelete() {
+      await Api.delete(`/store/collections/${this.id}`);
+      this.closeModal();
+      await this.getList();
+    },
+
     async submitForm() {
       try {
-        await Api.post('/store/delivery', this.form);
+        await Api.post('/store/collections', this.form);
       } catch (e) {
         console.error('submitForm::', e);
       }
     },
     async updateForm() {
       try {
-        await Api.patch(`/store/delivery/${this.id}`, this.form);
+        await Api.patch(`/store/collections/${this.id}`, this.form);
       } catch (e) {
         console.error('updateForm::', e);
       }
     },
-    modalToggle(payload = !this.view) {
-      this.view = payload;
-    },
-    deleteModalToggle(payload = !this.deleteView) {
-      this.deleteView = payload;
-    },
+
     CHANGE_FIELDS_VALUE_BY_KEY(payload) {
       Object.keys(payload).forEach((key) => {
         this.form[key] = payload[key];
