@@ -9,17 +9,17 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 
-import ordersHeaders from '../entities/ordersHeaders';
-
-import { useAdminStore } from '@/stores/admin.store.js';
-
 import KusakabeTable from '@/components/KusakabeTable';
 
+import { useAdminStore } from '@/stores/admin.store';
+
+import headers from '../entities/headers';
+
 export default {
-  name: 'AdminOrders',
+  name: 'AdminOrdersPage',
   components: { KusakabeTable },
   data: () => ({
-    headers: ordersHeaders,
+    headers,
   }),
   computed: {
     ...mapState(useAdminStore, ['data']),

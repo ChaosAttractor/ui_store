@@ -1,9 +1,9 @@
 <template>
-  <section class="admin-collections">
-    <AdminCollectionsDrawer />
-    <AdminCollectionsConfirm />
+  <section class="admin-delivery">
+    <AdminDeliveryDrawer />
+    <AdminDeliveryConfirm />
     <div class="d-flex justify-end">
-      <KusakabeButton content="Создать коллекцию" size="L" @click="modalToggle(true)" />
+      <KusakabeButton content="Добавить сервис доставки" size="L" @click="modalToggle(true)" />
     </div>
     <KusakabeTable :headers="headers()" :items="data">
       <template #body>
@@ -14,24 +14,22 @@
           :label="head.text"
           :width="head.width"
         >
-          <template v-if="head.value === 'createdAt'" #default="{ row }">
-            <span>
-              {{ getDate(row[head.value]) }}
-            </span>
+          <template v-if="head.value === 'price'" #default="{ row }">
+            <span> {{ row[head.value].toLocaleString() }} &#8381; </span>
           </template>
           <template v-else-if="head.value === 'actions'" #default="{ row }">
             <div class="d-flex gx-2">
               <el-tooltip content="Редактирование" placement="top" :enterable="false">
                 <KusakabeIconWrapper
                   icon-name="EditIcon"
-                  class="kusakabe-icon-color admin-collections--edit kusakabe-icon-cursor_pointer"
+                  class="kusakabe-icon-color admin-delivery--edit kusakabe-icon-cursor_pointer"
                   @click="getDetail(row.id)"
                 />
               </el-tooltip>
               <el-tooltip content="Удаление" placement="top" :enterable="false">
                 <KusakabeIconWrapper
                   icon-name="DeleteIcon"
-                  class="kusakabe-icon-color admin-collections--delete kusakabe-icon-cursor_pointer"
+                  class="kusakabe-icon-color admin-delivery--delete kusakabe-icon-cursor_pointer"
                   @click="getConfirm(row.id)"
                 />
               </el-tooltip>
@@ -46,42 +44,47 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 
-import { useCollectionsStore } from '@/stores/collections.store';
-
-import KusakabeTable from '@/components/KusakabeTable';
 import KusakabeButton from '@/components/KusakabeButton';
 import KusakabeIconWrapper from '@/components/KusakabeIconWrapper';
+import KusakabeTable from '@/components/KusakabeTable';
 
-import AdminCollectionsDrawer from './AdminCollectionsDrawer';
+import AdminDeliveryDrawer from '../components/AdminDeliveryDrawer';
+import AdminDeliveryConfirm from '../components/AdminDeliveryConfirm';
 
-import collectionsHeaders from '../entities/collectionsHeaders';
+import { useDeliveryStore } from '@/stores/delivery.store';
 
-import getDate from '@/utils/getDate';
-import AdminCollectionsConfirm from '@/modules/admin/components/AdminCollectionsConfirm.vue';
+import headers from '../entities/headers';
 
 export default {
-  name: 'AdminCollections',
+  name: 'AdminDeliveryPage',
   components: {
-    AdminCollectionsConfirm,
+    AdminDeliveryConfirm,
     KusakabeIconWrapper,
-    AdminCollectionsDrawer,
-    KusakabeButton,
     KusakabeTable,
+    AdminDeliveryDrawer,
+    KusakabeButton,
   },
   data: () => ({
-    headers: collectionsHeaders,
+    headers,
+    visible: {
+      edit: false,
+      delete: false,
+    },
   }),
   computed: {
-    ...mapState(useCollectionsStore, ['data']),
-    getDate() {
-      return (date, format) => getDate(date, format);
-    },
+    ...mapState(useDeliveryStore, ['data']),
   },
   async mounted() {
-    await this.getList();
+    this.getList();
   },
   methods: {
-    ...mapActions(useCollectionsStore, ['getList', 'modalToggle', 'getDetail', 'getConfirm']),
+    ...mapActions(useDeliveryStore, [
+      'modalToggle',
+      'getList',
+      'SET_DATA',
+      'getDetail',
+      'getConfirm',
+    ]),
   },
 };
 </script>
@@ -89,7 +92,7 @@ export default {
 <style lang="sass" scoped>
 @import "@/assets/sass/colors"
 
-.admin-collections
+.admin-delivery
   &--edit:hover
     stroke: map-get($green, 'light-2') !important
   &--delete:hover

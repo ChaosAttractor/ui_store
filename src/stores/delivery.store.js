@@ -74,6 +74,7 @@ export const useDeliveryStore = defineStore('delivery', {
       this.closeModal();
       await this.getList();
     },
+
     async submitForm() {
       try {
         await Api.post('/store/delivery', this.form);
@@ -88,12 +89,14 @@ export const useDeliveryStore = defineStore('delivery', {
         console.error('updateForm::', e);
       }
     },
+
     modalToggle(payload = !this.view) {
       this.view = payload;
     },
     deleteModalToggle(payload = !this.deleteView) {
       this.deleteView = payload;
     },
+
     CHANGE_FIELDS_VALUE_BY_KEY(payload) {
       Object.keys(payload).forEach((key) => {
         this.form[key] = payload[key];

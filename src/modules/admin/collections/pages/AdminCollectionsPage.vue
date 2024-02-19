@@ -1,9 +1,9 @@
 <template>
-  <section class="admin-delivery">
-    <AdminDeliveryDrawer />
-    <AdminDeliveryConfirm />
+  <section class="admin-collections">
+    <AdminCollectionsDrawer />
+    <AdminCollectionsConfirm />
     <div class="d-flex justify-end">
-      <KusakabeButton content="Добавить сервис доставки" size="L" @click="modalToggle(true)" />
+      <KusakabeButton content="Создать коллекцию" size="L" @click="modalToggle(true)" />
     </div>
     <KusakabeTable :headers="headers()" :items="data">
       <template #body>
@@ -14,22 +14,24 @@
           :label="head.text"
           :width="head.width"
         >
-          <template v-if="head.value === 'price'" #default="{ row }">
-            <span> {{ row[head.value].toLocaleString() }} &#8381; </span>
+          <template v-if="head.value === 'createdAt'" #default="{ row }">
+            <span>
+              {{ getDate(row[head.value]) }}
+            </span>
           </template>
           <template v-else-if="head.value === 'actions'" #default="{ row }">
             <div class="d-flex gx-2">
               <el-tooltip content="Редактирование" placement="top" :enterable="false">
                 <KusakabeIconWrapper
                   icon-name="EditIcon"
-                  class="kusakabe-icon-color admin-delivery--edit kusakabe-icon-cursor_pointer"
+                  class="kusakabe-icon-color admin-collections--edit kusakabe-icon-cursor_pointer"
                   @click="getDetail(row.id)"
                 />
               </el-tooltip>
               <el-tooltip content="Удаление" placement="top" :enterable="false">
                 <KusakabeIconWrapper
                   icon-name="DeleteIcon"
-                  class="kusakabe-icon-color admin-delivery--delete kusakabe-icon-cursor_pointer"
+                  class="kusakabe-icon-color admin-collections--delete kusakabe-icon-cursor_pointer"
                   @click="getConfirm(row.id)"
                 />
               </el-tooltip>
@@ -44,46 +46,42 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 
+import { useCollectionsStore } from '@/stores/collections.store';
+
+import KusakabeTable from '@/components/KusakabeTable';
 import KusakabeButton from '@/components/KusakabeButton';
 import KusakabeIconWrapper from '@/components/KusakabeIconWrapper';
-import KusakabeTable from '@/components/KusakabeTable';
-import AdminDeliveryDrawer from './AdminDeliveryDrawer';
 
-import { useDeliveryStore } from '@/stores/delivery.store.js';
+import AdminCollectionsDrawer from '../components/AdminCollectionsDrawer';
+import AdminCollectionsConfirm from '../components/AdminCollectionsConfirm';
 
-import deliveryHeaders from '../entities/deliveryHeaders';
-import AdminDeliveryConfirm from '@/modules/admin/components/AdminDeliveryConfirm.vue';
+import headers from '../entities/headers';
+
+import getDate from '@/utils/getDate';
 
 export default {
-  name: 'AdminDelivery',
+  name: 'AdminCollectionsPage',
   components: {
-    AdminDeliveryConfirm,
+    AdminCollectionsConfirm,
     KusakabeIconWrapper,
-    KusakabeTable,
-    AdminDeliveryDrawer,
+    AdminCollectionsDrawer,
     KusakabeButton,
+    KusakabeTable,
   },
   data: () => ({
-    headers: deliveryHeaders,
-    visible: {
-      edit: false,
-      delete: false,
-    },
+    headers,
   }),
   computed: {
-    ...mapState(useDeliveryStore, ['data']),
+    ...mapState(useCollectionsStore, ['data']),
+    getDate() {
+      return (date, format) => getDate(date, format);
+    },
   },
   async mounted() {
-    this.getList();
+    await this.getList();
   },
   methods: {
-    ...mapActions(useDeliveryStore, [
-      'modalToggle',
-      'getList',
-      'SET_DATA',
-      'getDetail',
-      'getConfirm',
-    ]),
+    ...mapActions(useCollectionsStore, ['getList', 'modalToggle', 'getDetail', 'getConfirm']),
   },
 };
 </script>
@@ -91,7 +89,7 @@ export default {
 <style lang="sass" scoped>
 @import "@/assets/sass/colors"
 
-.admin-delivery
+.admin-collections
   &--edit:hover
     stroke: map-get($green, 'light-2') !important
   &--delete:hover

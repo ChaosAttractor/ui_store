@@ -30,7 +30,7 @@ const router = Router.createRouter({
       meta: {
         title: 'Админ панель',
       },
-      component: () => import('../modules/admin/pages/AdminPages'),
+      component: () => import('../modules/admin/main/pages/AdminPage.vue'),
     },
     {
       path: '/profile',

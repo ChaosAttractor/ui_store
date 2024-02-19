@@ -2,29 +2,30 @@
   <section class="admin">
     <KusakabeTabs :value="activeTab" :tabs="tabList()" @update:tab="tabHandler">
       <template #orders>
-        <AdminOrders />
+        <AdminOrdersPage />
       </template>
       <template #delivery>
-        <AdminDelivery />
+        <AdminDeliveryPage />
       </template>
       <template #collections>
-        <AdminCollections />
+        <AdminCollectionsPage />
       </template>
     </KusakabeTabs>
   </section>
 </template>
 
 <script>
-import AdminOrders from '../components/AdminOrders';
-import AdminDelivery from '../components/AdminDelivery';
-import AdminCollections from '../components/AdminCollections';
-import KusakabeTabs from '@/components/KusakabeTabs';
-
 import tabList from '../entities/tabList';
 
+import KusakabeTabs from '@/components/KusakabeTabs';
+
+import AdminCollectionsPage from '../../collections/pages/AdminCollectionsPage';
+import AdminDeliveryPage from '../../delivery/pages/AdminDeliveryPage';
+import AdminOrdersPage from '../../orders/pages/AdminOrdersPage';
+
 export default {
-  name: 'AdminTab',
-  components: { AdminCollections, KusakabeTabs, AdminDelivery, AdminOrders },
+  name: 'AdminPage',
+  components: { AdminOrdersPage, AdminDeliveryPage, AdminCollectionsPage, KusakabeTabs },
   data: () => ({
     tabList,
     activeTab: tabList()[0].value,
