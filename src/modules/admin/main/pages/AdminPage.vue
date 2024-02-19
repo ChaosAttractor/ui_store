@@ -10,6 +10,9 @@
       <template #collections>
         <AdminCollectionsPage />
       </template>
+      <template #clothes>
+        <AdminClothesPage />
+      </template>
     </KusakabeTabs>
   </section>
 </template>
@@ -22,10 +25,17 @@ import KusakabeTabs from '@/components/KusakabeTabs';
 import AdminCollectionsPage from '../../collections/pages/AdminCollectionsPage';
 import AdminDeliveryPage from '../../delivery/pages/AdminDeliveryPage';
 import AdminOrdersPage from '../../orders/pages/AdminOrdersPage';
+import AdminClothesPage from '../../clothes/pages/AdminClothesPage';
 
 export default {
   name: 'AdminPage',
-  components: { AdminOrdersPage, AdminDeliveryPage, AdminCollectionsPage, KusakabeTabs },
+  components: {
+    AdminClothesPage,
+    AdminOrdersPage,
+    AdminDeliveryPage,
+    AdminCollectionsPage,
+    KusakabeTabs,
+  },
   data: () => ({
     tabList,
     activeTab: tabList()[0].value,

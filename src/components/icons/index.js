@@ -3,6 +3,7 @@ import DeliveryIcon from './DeliveryIcon';
 import EditIcon from './EditIcon';
 import LogoutIcon from './LogoutIcon';
 import OrdersIcon from './OrdersIcon';
+import UploadIcon from './UploadIcon';
 
 const icons = {
   DeleteIcon,
@@ -10,6 +11,7 @@ const icons = {
   EditIcon,
   LogoutIcon,
   OrdersIcon,
+  UploadIcon,
 };
 
 export default {

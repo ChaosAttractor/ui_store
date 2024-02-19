@@ -8,6 +8,7 @@
       :placeholder="placeholder"
       :model-value="value"
       :type="type"
+      :autosize="autosize"
       :show-password="showPassword"
       @input="inputHandler"
     />
@@ -29,6 +30,10 @@ export default {
     value: {
       type: [String, Number],
       default: '',
+    },
+    autosize: {
+      type: Boolean,
+      default: false,
     },
     type: {
       type: String,

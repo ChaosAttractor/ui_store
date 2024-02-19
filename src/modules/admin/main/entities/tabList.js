@@ -11,4 +11,8 @@ export default () => [
     value: 'collections',
     name: 'Коллекции',
   },
+  {
+    value: 'clothes',
+    name: 'Одежда',
+  },
 ];

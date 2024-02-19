@@ -1,5 +1,5 @@
 <template>
-  <el-drawer :model-value="view" @close="closeHandler">
+  <el-drawer :model-value="view" class="kusakabe-drawer" @close="closeHandler">
     <template #header>
       <slot name="header">
         <h3 class="text--black">

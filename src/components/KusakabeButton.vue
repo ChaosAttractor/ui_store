@@ -1,5 +1,11 @@
 <template>
-  <el-button :size="btnSize[size]" @click="clickHandler">
+  <el-button
+    :type="btnType"
+    :disabled="disabled"
+    :loading="loading"
+    :size="btnSize[size]"
+    @click="clickHandler"
+  >
     <slot>
       {{ content }}
     </slot>
@@ -18,6 +24,18 @@ export default {
       type: String,
       default: 'M',
     },
+    primary: {
+      type: Boolean,
+      default: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['click'],
   data: () => ({
@@ -27,6 +45,11 @@ export default {
       S: 'small',
     },
   }),
+  computed: {
+    btnType() {
+      return this.primary ? 'primary' : '';
+    },
+  },
   methods: {
     clickHandler() {
       this.$emit('click');

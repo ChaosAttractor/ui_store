@@ -71,6 +71,11 @@ body, html, #app
       fill: map-get($plain, 'black') !important
     &__transparent
       stroke: transparent
+    &__gray
+      stroke: map-get($gray, 'dark-2')
+      &_fill
+        fill: map-get($gray, 'dark-2') !important
+
   &-cursor
     &_inherit
       cursor: inherit
